@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>链式编程</title>
+
+</head>
+<body>
+	 <div>div</div>
+    <p>p</p> 
+    <div>div</div>
+    <span>span</span>
+    <p>p</p> 
+    <div>div</div>
+</body>
+<script type="text/javascript">
+	function select(selector){
+		var obj= document.querySelectorAll(selector);
+		obj.each=function(callback){
+			// 使用callback遍历obj中的每一个元素
+			each(this,callback);//谁调用this就是谁 obj
+		};
+		return obj;
+	}
+	function each(arr,callback){
+		for (var i = 0; i < arr.length; i++) {
+			callback(arr[i],i);
+		}
+	}
+	select('div,p').each(function(v){
+		v.style.border=v.nodeName=='P'?'1px solid red':'1px solid blue';
+	})
+
+</script>
+</html>

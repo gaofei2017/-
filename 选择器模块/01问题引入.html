@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>问题引入</title>
+</head>
+<body>
+	<div>div</div>
+    <p>p</p> 
+    <div>div</div>
+    <span>span</span>
+    <p>p</p> 
+    <div>div</div>
+<script type="text/javascript">
+	//getElementsByTagName() getElementsByClassName() getElementById() 返回一个伪数组
+	// 伪数组:不是数组但是可以遍历
+	/*
+		1>可以使用likeArr[index]获得元素
+		2>likeArr.length>=0
+
+	*/
+	//1. 获取要操作的元素
+	var divs = document.getElementsByTagName('div');
+	var ps=document.getElementsByTagName('p');
+	//2. 循环遍历每一个元素设置样式
+	for (var i = 0; i < divs.length; i++) {
+		divs[i].style.border="1px solid red";
+	}
+	for (var i = 0; i < ps.length; i++) {
+		ps[i].style.border="1px solid blue";
+	}
+	//jquery中的元素选择与样式设置 $('div,p').css()
+	
+	/*
+		模仿jquery优化代码
+		1.将for循环封装成方法
+		function css(eles,styles){} ->undefined
+		2.优化函数
+		function css(obj){}
+		obj:{eles:[],styles:{}}
+		3.将for循环封装成each或map的方法来处理任意遍历
+		4.封装库或框架 -> 考虑通用性
+		5.使用querySelectorAll()方法封装元素获取
+
+
+	*/
+</script>
+</html>

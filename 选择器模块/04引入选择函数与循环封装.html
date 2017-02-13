@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择函数与循环封装</title>
+</head>
+<body>
+	<div>div</div>
+    <p>p</p> 
+    <div>div</div>
+    <span>span</span>
+    <p>p</p> 
+    <div>div</div>
+</body>
+<script type="text/javascript">
+	function select(selector){
+		return document.querySelectorAll(selector);
+	}
+	function each(arr,callback){
+		for (var i = 0; i < arr.length; i++) {
+			callback(arr[i],i);
+		}
+	}
+	var nodes=select('div,p');
+	each(nodes,function(v){
+		v.style.border=v.nodeName=='DIV'?'1px solid red':'1px solid blue';
+	})
+</script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>验证map方法</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	function isArrayLike(obj){
+		if (Object.prototype.toString.call(obj)=='[object Array]') {
+			return true;
+		}
+		var length='length' &&obj.length;
+		return typeof length=='number' && obj.length>=0; 
+	}
+	function map(arr,callback){
+		var newArr=[],tmp;
+		if (isArrayLike(arr)) {
+			for (var i = 0; i < arr.length; i++) {
+				tmp=callback(arr[i],i);
+				if (tmp != null) {
+				newArr.push(tmp);
+			}
+			}
+			
+		}else{
+			for(var k in arr){
+				tmp=callback(arr[k],k);
+				if (tmp != null) {
+					newArr.push(tmp);
+				}
+			}
+		}
+		return newArr;
+	}
+	var datas = [
+        { name: 'jim1', age: 19, gender: '男' },
+        { name: 'jim2', age: 19, gender: '男' },
+        { name: 'jim3', age: 19, gender: '男' },
+        { name: 'jim4', age: 19, gender: '男' },
+        { name: 'jim5', age: 19, gender: '男' },
+        { name: 'jim6', age: 19, gender: '男' }
+    ];
+    document.body.innerHTML='<table border="1" width="400"><tbody>'+
+    	map(datas,function(item){
+    		return '<tr>'+map(item,function(v){
+    			return '<td>'+v+'</td>';
+    		
+    		}).join('')
+    		+'</tr>';
+    	}).join('')
+    	+'</tbody></table>';
+</script>
+</html>

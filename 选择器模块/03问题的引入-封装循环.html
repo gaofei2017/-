@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装循环</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	/*
+		数组求最值、求和、求积、求平均值
+		分别使用循环完成
+	*/
+	var arr=[1, 3, 5, 2, 8, 7, 6, 9];
+	// 1.求最大值
+	// 假设
+	var max=arr[0];
+	// 循环遍历
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i]>max) {
+			max=arr[i];
+		}
+	}
+	console.log("max="+max);
+	// 求最小值
+	var min=arr[0];
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i]<min) {
+			min=arr[i];
+		}
+	}
+	console.log("min="+min);
+	// 求和
+	var sum=0;
+	for (var i = 0; i < arr.length; i++) {
+		sum+=arr[i]
+	}
+	console.log("sum="+sum);
+	// 求积
+	var cross=1;
+	for (var i = 0; i < arr.length; i++) {
+		cross*=arr[i];
+	}
+	console.log("cross="+cross);
+	// 求平均值
+	var average=0;
+	for (var i = 0; i < arr.length; i++) {
+		sum+=arr[i];
+		average=sum/arr.length;
+	}
+	console.log("average="+parseInt(average));
+
+	// each()方法封装1
+	// function each(arr,statement){
+	// 	for (var i = 0; i < arr.length; i++) {
+			/*
+			statement:一个字符串代码段
+			statement执行方式
+			1>new Function('')
+			2>eval()
+			(new Function('index',statement))(i);
+			// 这么写有一些问题:
+		    // 1, 应该在字符串中写什么变量? 那些变量可以用, 那些不能用? 不清楚的.
+		    // 2, 如果方法体很长, 这样写会无法维护
+		    // 需要重新考虑封装
+			*/
+		//代码过于复杂
+			// (new Function('index',statement))(i);
+			// (function ( index ){
+			// 	if (max < arr[i]) {
+			// 		max=arr[ index ];
+			// 	}
+			// })(i);//自执行函数
+	// 	}
+	// }
+	// each(arr,'if(max<arr[index]){arr[index];}');
+	// 回调函数
+		function each(arr,callback){
+			for (var i = 0; i < arr.length; i++) {
+				callback(arr[i],i);
+			}
+		}
+		var arr=[1, 3, 5, 2, 8, 7, 6, 9];
+		// 求最大值
+		var max=arr[0];
+		each(arr,function(v,i){
+			if(max<v){
+				max=v;
+			}
+			console.log(max);
+		})
+
+</script>
+</html>

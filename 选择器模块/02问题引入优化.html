@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>问题引入优化</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	/*
+		1.引入querySelectorAll()方法
+		var nodes = document.querySelectorAll('div,p')
+		开发中该方法可能频发使用，会造成代码量越来越大，方法名越长出现错误概率就大，应该考虑使用段名称,开发环境下利用阅读与维护代码详细更好，生成环境精简更好，考虑代码的压缩混淆
+	*/
+	// 1.封装选择器
+	function select(selector){
+		return document.querySelectorAll(selector);
+	}
+	// 2.获取要操作的元素
+	var nodes = select('div,p');
+	// 为了防止全局污染，引入沙盒模式，也就是命名空间
+	var j={};
+	j.qua=function(selector){
+		return document.querySelectorAll(selector);
+	}
+</script>
+</html>
