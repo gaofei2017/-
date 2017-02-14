@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>in运算符</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	/*
+		in运算符：判断一个用户名描述的属性是否在一个对象中
+		语法：
+		'名字'in 对象 ->boolean
+		对象中是否含有一个名字与描述相同的属性
+	*/
+	var o={
+		name:'jim',
+		age:19
+	}
+	//实际开发中不应该直接利用对象修改原型
+	//应该使用构造函数
+	o.__proto__={
+		gender:'男'
+	}
+	//o有两个属性，name age
+	console.log('name' in o);//true
+	console.log('gender' in o);//true
+
+</script>
+</html>
